@@ -1,5 +1,0 @@
-steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/kaggle-competitions-442514/bert-sentiment-classifier/bert-sentiment-classifier:v1.0.0-beta', '.' ]
-images: 
-- 'us-central1-docker.pkg.dev/kaggle-competitions-442514/bert-sentiment-classifier/bert-sentiment-classifier:v1.0.0-beta'
