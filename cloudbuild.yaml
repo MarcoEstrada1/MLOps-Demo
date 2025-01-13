@@ -1,5 +1,33 @@
 steps:
+-name: 'ubuntu'
+ entrypoint: 'bash'
+ args:
+    - '-c'
+    - |
+      ./scripts/update_version.sh
+
+- name: 'ubuntu'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      export VERSION=$(cat VERSION)
+      echo "Building Docker image version: $VERSION"
+      
+     
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/kaggle-competitions-442514/bert-sentiment-classifier/bert-sentiment-classifier:v1.0.0-beta', '.' ]
+  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/proyecto-facturable/bert-sentiment-classifier/bert-sentiment-classifier:$VERSION', '.' ]
+  
+  
+  
+- name: 'google/cloud-sdk'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      python3 -m pipeline.run_pipeline --run-only \
+        --container-uri=us-central1-docker.pkg.dev/proyecto-facturable/bert-sentiment-classifier/bert-sentiment-classifier:$VERSION
+ 
 images: 
-- 'us-central1-docker.pkg.dev/kaggle-competitions-442514/bert-sentiment-classifier/bert-sentiment-classifier:v1.0.0-beta'
+- 'us-central1-docker.pkg.dev/proyecto-facturable/bert-sentiment-classifier/bert-sentiment-classifier:$VERSION'
+

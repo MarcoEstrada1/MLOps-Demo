@@ -1,3 +1,7 @@
 tf-models-official==2.15.0
 tensorflow-text==2.15.0
 tensorflow-hub==0.16.1
+kfp==1.8.19
+google_cloud_pipeline_components==1.0.39
+google-cloud-aiplatform==1.22.0
+datetime
