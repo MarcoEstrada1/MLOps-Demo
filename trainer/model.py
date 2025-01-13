@@ -81,10 +81,10 @@ def build_text_classifier(hparams, optimizer):
     """
     
     text_input = tf.keras.layers.Input(shape=(), dtype=tf.string, name='text')
-    preprocessor=hub.KerasLayer(HPARAMS["tfhub-bert-preprocessor"], name='preprocessing')
+    preprocessor=hub.KerasLayer(hparams["tfhub-bert-preprocessor"], name='preprocessing')
     
     encoder_inputs = preprocessor(text_input)
-    encoder= hub.KerasLayer(HPARAMS["tfhub-bert-encoder"], trainable=True, name='BERT_encoder')
+    encoder= hub.KerasLayer(hparams["tfhub-bert-encoder"], trainable=True, name='BERT_encoder')
     outputs = encoder(encoder_inputs)
 
     classifier = outputs['pooled_output']
