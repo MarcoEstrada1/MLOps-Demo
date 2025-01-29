@@ -1,6 +1,8 @@
 steps:
     - name: 'gcr.io/cloud-builders/docker'
-      args: ['build', '-t',  'us-central1-docker.pkg.dev/proyecto-facturable/online-retail-clv/dnn-regressor:latest', '.' ]
+      args: ['build', '-t',  'us-central1-docker.pkg.dev/proyecto-facturable/online-retail-clv/dnn-regressor:$SHORT_SHA', '.' ]
+    - name: 'gcr.io/cloud-builders/docker'
+      args: ['push', 'us-central1-docker.pkg.dev/proyecto-facturable/online-retail-clv/dnn-regressor:$SHORT_SHA']
 images:
     - "us-central1-docker.pkg.dev/proyecto-facturable/online-retail-clv/dnn-regressor:latest"
 

@@ -1,3 +1,7 @@
 explainable-ai-sdk==1.3.0
 tensorflow-io==0.15.0
 pyarrow
+kfp==1.8.19
+google_cloud_pipeline_components==1.0.39
+google-cloud-aiplatform==1.22.0
+datetime
